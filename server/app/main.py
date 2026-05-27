@@ -94,3 +94,13 @@ def info():
         "tag_counts": dict(model.hmm.tag_counts.most_common()),
         "dev_accuracy": dev_accuracy,
     }
+
+
+@app.get("/review")
+def get_review():
+    REVIEW_PATH = os.path.join(BASE_DIR, "..", "reviews", "paper-review.md")
+    if os.path.exists(REVIEW_PATH):
+        with open(REVIEW_PATH, "r", encoding="utf-8") as f:
+            content = f.read()
+        return {"content": content}
+    return {"content": ""}
