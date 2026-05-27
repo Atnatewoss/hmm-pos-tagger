@@ -56,8 +56,6 @@ The authors derive inference using **sequential Bayes by Backprop** (a streaming
 
 ## 4. Future Research Directions
 
-## 4. Future Research Directions
-
 The following directions are drawn from gaps in the current paper and from related literature in continual learning, Bayesian deep learning, and sequence modeling.
 
 ### 4.1 Scaling with Subspace Methods
