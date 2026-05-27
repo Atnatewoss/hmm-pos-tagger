@@ -1,4 +1,4 @@
-# HMM POS Tagger — Server
+# HMM POS Tagger - Server
 
 Python backend for the HMM part-of-speech tagger.
 
@@ -50,7 +50,8 @@ python -c "from app.core.dataset import download_data; download_data('data')"
 |--------|--------------|--------------------------------------------|
 | GET    | `/`          | Model overview (vocab, tags, accuracy)     |
 | GET    | `/info`      | Detailed model info (tag counts, etc.)     |
-| POST   | `/tag`       | Tag a sentence → `[(word, tag), ...]`      |
+| GET    | `/review`    | Paper review markdown content              |
+| POST   | `/tag`       | Tag a sentence -> `[(word, tag), ...]`      |
 | POST   | `/evaluate`  | Tag with per-word confidence scores        |
 
 ## Model
