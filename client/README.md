@@ -5,11 +5,18 @@ Next.js frontend for the HMM part-of-speech tagger.
 ## Setup
 
 ```bash
+cp .env.example .env
 npm install
 npm run dev
 ```
 
 Opens at [http://localhost:3000](http://localhost:3000).
+
+### Environment variables
+
+| Variable              | Default               | Description      |
+|-----------------------|-----------------------|------------------|
+| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Backend API URL |
 
 ## Usage
 
@@ -35,4 +42,4 @@ The client calls these backend endpoints:
 | `POST /evaluate` | On each tagging request    |
 | `GET /review`  | On "Paper Review" toggle      |
 
-Backend URL is configured in `app/page.tsx` (`API_URL` constant).
+Backend URL is configured via the `NEXT_PUBLIC_API_URL` environment variable (see `.env`), defaulting to `http://localhost:8000`. All API calls live in `app/lib/api.ts`.

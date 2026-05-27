@@ -42,6 +42,8 @@ hmm-pos-tagger/
       en_ewt-ud-train.conllu        #     12,544 sentences
       en_ewt-ud-dev.conllu          #     2,001 sentences
       en_ewt-ud-test.conllu         #     2,077 sentences
+    reviews/                        #   Paper review markdown
+      paper-review.md               #     Hidden Markov Neural Networks
     scripts/
       train.py                      #   Training CLI
     app/
@@ -57,14 +59,16 @@ hmm-pos-tagger/
         evaluate.py                 #   Accuracy evaluation
     pyproject.toml                  #   Dependencies
   client/                           # Next.js frontend
+    .env.example                    #   Environment template
     app/
-      page.tsx                      #   POS tagger UI
+      page.tsx                      #   Landing page
       layout.tsx                    #   Root layout
       globals.css                   #   Tailwind + custom styles
+      lib/
+        api.ts                      #   API client functions
+        markdown.tsx                #   Markdown renderer
     public/
     package.json
-  reviews/
-    paper-review.md                 # Paper review: Hidden Markov Neural Networks
 ```
 
 ### Data flow
@@ -162,11 +166,12 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ```bash
 cd client
+cp .env.example .env
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The frontend calls the backend at `http://localhost:8000`.
+Open [http://localhost:3000](http://localhost:3000). The frontend calls the backend at `NEXT_PUBLIC_API_URL` (default `http://localhost:8000`, configured in `client/.env`).
 
 ### Downloading the dataset
 
@@ -179,7 +184,7 @@ download_data("data")   # Downloads train/dev/test to data/
 
 ## Paper review
 
-A review of **"Hidden Markov Neural Networks"** by Rimella & Whiteley (Entropy, 2025) is at [`reviews/paper-review.md`](reviews/paper-review.md) and available interactively in the frontend under the **Paper Review** section.
+A review of **"Hidden Markov Neural Networks"** by Rimella & Whiteley (Entropy, 2025) is at [`server/reviews/paper-review.md`](server/reviews/paper-review.md) and available interactively in the frontend's review page.
 
 **Sections:** Summary - Strengths (5) - Weaknesses (5) - 8 Future Research Directions - Connection to references - Overall assessment (7.5/10)
 
