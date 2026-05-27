@@ -1,7 +1,7 @@
 # Paper Review: Hidden Markov Neural Networks
 
 **Authors:** Lorenzo Rimella, Nick Whiteley  
-**Published in:** Entropy, 2025, 27(2), 168 — Special Issue on Advances in Probabilistic Machine Learning  
+**Published in:** Entropy, 2025, 27(2), 168  -  Special Issue on Advances in Probabilistic Machine Learning  
 **DOI:** 10.3390/e27020168  
 **arXiv:** 2004.06963
 
@@ -9,15 +9,15 @@
 
 ## 1. Summary
 
-This paper proposes **Hidden Markov Neural Networks (HMNNs)** — a hybrid model that fuses Factorial Hidden Markov Models (FHMMs) with Bayesian neural networks to address a central tension in continual learning and time-series forecasting: how to adapt to new data while selectively forgetting outdated information.
+This paper proposes **Hidden Markov Neural Networks (HMNNs)**  -  a hybrid model that fuses Factorial Hidden Markov Models (FHMMs) with Bayesian neural networks to address a central tension in continual learning and time-series forecasting: how to adapt to new data while selectively forgetting outdated information.
 
-The core idea is conceptually elegant: treat the **weights of a neural network as the hidden states of an HMM**. At each time step, the weights evolve according to a Markov transition kernel, and the observed data are generated conditioned on the current weight configuration. This formulation naturally supports online Bayesian inference — as new data arrive, the posterior over weights is updated via a filtering algorithm.
+The core idea is conceptually elegant: treat the **weights of a neural network as the hidden states of an HMM**. At each time step, the weights evolve according to a Markov transition kernel, and the observed data are generated conditioned on the current weight configuration. This formulation naturally supports online Bayesian inference  -  as new data arrive, the posterior over weights is updated via a filtering algorithm.
 
 The authors derive inference using **sequential Bayes by Backprop** (a streaming variant of Blundell et al.'s Bayes by Backprop), enhanced with **variational DropConnect** for stronger regularization. The reparameterization trick enables low-variance gradient estimates. The paper evaluates HMNNs on three tasks:
 
-1. **MNIST** — static classification with streaming data, demonstrating competitive accuracy and well-calibrated uncertainty.
-2. **Dynamic two-moons** — a time-evolving classification boundary where HMNNs adapt to distribution shift while quantifying uncertainty via credible intervals.
-3. **Next-frame video prediction** — forecasting on dynamic visual sequences.
+1. **MNIST**  -  static classification with streaming data, demonstrating competitive accuracy and well-calibrated uncertainty.
+2. **Dynamic two-moons**  -  a time-evolving classification boundary where HMNNs adapt to distribution shift while quantifying uncertainty via credible intervals.
+3. **Next-frame video prediction**  -  forecasting on dynamic visual sequences.
 
 ---
 
@@ -25,7 +25,7 @@ The authors derive inference using **sequential Bayes by Backprop** (a streaming
 
 | Aspect | Assessment |
 |---|---|
-| **Problem formulation** | The HMNN elegantly frames continual learning as state-space inference — a principled Bayesian treatment of the stability-plasticity dilemma. |
+| **Problem formulation** | The HMNN elegantly frames continual learning as state-space inference  -  a principled Bayesian treatment of the stability-plasticity dilemma. |
 | **Technical soundness** | The combination of FHMMs, variational Bayes, and DropConnect is theoretically grounded. The use of the reparameterization trick follows established practice. |
 | **Uncertainty quantification** | Unlike standard NNs, HMNNs produce predictive distributions with meaningful credible intervals, a crucial property for safety-critical applications. |
 | **Generality** | The framework is model-agnostic with respect to the neural architecture (experiments use fully connected networks). |
@@ -72,7 +72,7 @@ HMNNs have a natural application to **sequence labeling** tasks like POS tagging
 
 ### 4.4 Federated Continual Learning
 
-The streaming nature of HMNNs makes them well-suited for **federated learning** scenarios where each client observes a non-stationary data stream (Yoon et al., 2021). The Markov transition kernel can be interpreted as a local model update, and the server could aggregate posterior parameters rather than raw gradients — providing a natural privacy-preserving mechanism. The challenge lies in aligning the HMM states across heterogeneous clients.
+The streaming nature of HMNNs makes them well-suited for **federated learning** scenarios where each client observes a non-stationary data stream (Yoon et al., 2021). The Markov transition kernel can be interpreted as a local model update, and the server could aggregate posterior parameters rather than raw gradients  -  providing a natural privacy-preserving mechanism. The challenge lies in aligning the HMM states across heterogeneous clients.
 
 ### 4.5 Amortized Variational Inference
 
@@ -91,7 +91,7 @@ The transition kernel currently applies uniformly to all weights. By learning **
 
 ### 4.8 Uncertainty-Guided Data Acquisition
 
-The calibrated uncertainty estimates from HMNNs could drive **active learning** or **bayesian optimization** strategies in non-stationary environments. For instance, when the predictive uncertainty spikes, the system could request a human label or query a more expensive sensor — a capability directly enabled by the HMNN's probabilistic outputs.
+The calibrated uncertainty estimates from HMNNs could drive **active learning** or **bayesian optimization** strategies in non-stationary environments. For instance, when the predictive uncertainty spikes, the system could request a human label or query a more expensive sensor  -  a capability directly enabled by the HMNN's probabilistic outputs.
 
 ---
 
@@ -99,14 +99,14 @@ The calibrated uncertainty estimates from HMNNs could drive **active learning** 
 
 The paper builds on three pillars that the training materials reference:
 
-1. **Jurafsky & Martin, *Speech and Language Processing* (SLP3, Appendix A)** — Provides the foundational HMM formalism (Markov chains, transition/emission probabilities, the Viterbi algorithm) that underlies the HMNN's weight dynamics. The HMNN extends the classic discrete-state HMM to continuous weight spaces via variational inference.
+1. **Jurafsky & Martin, *Speech and Language Processing* (SLP3, Appendix A)**  -  Provides the foundational HMM formalism (Markov chains, transition/emission probabilities, the Viterbi algorithm) that underlies the HMNN's weight dynamics. The HMNN extends the classic discrete-state HMM to continuous weight spaces via variational inference.
 
-2. **Bishop, *Pattern Recognition and Machine Learning* (2006)** — Covers the graphical model perspective of HMMs (Chapter 13) and variational inference (Chapter 10). The HMNN's sequential Bayes by Backprop is a direct descendant of the variational methods Bishop details, adapted for streaming data.
+2. **Bishop, *Pattern Recognition and Machine Learning* (2006)**  -  Covers the graphical model perspective of HMMs (Chapter 13) and variational inference (Chapter 10). The HMNN's sequential Bayes by Backprop is a direct descendant of the variational methods Bishop details, adapted for streaming data.
 
-3. **The HMNN paper itself (Rimella & Whiteley, 2025)** — Synthesizes these foundations by replacing discrete hidden states (from classic HMM tagging) with continuous neural network weights, and replacing MLE counting (from supervised HMM learning) with variational Bayes.
+3. **The HMNN paper itself (Rimella & Whiteley, 2025)**  -  Synthesizes these foundations by replacing discrete hidden states (from classic HMM tagging) with continuous neural network weights, and replacing MLE counting (from supervised HMM learning) with variational Bayes.
 
 ---
 
 ## 6. Assessment
 
-**Rating: 7.5/10** — A technically sound contribution that addresses an important problem (continual learning with uncertainty) through a principled combination of HMMs and Bayesian neural networks. The main limitations are the scalability constraints and the relatively narrow empirical evaluation. The strongest impact would likely come from extending the framework to larger architectures and real-world sequence labeling tasks, where the HMM heritage provides a natural inductive bias.
+**Rating: 7.5/10**  -  A technically sound contribution that addresses an important problem (continual learning with uncertainty) through a principled combination of HMMs and Bayesian neural networks. The main limitations are the scalability constraints and the relatively narrow empirical evaluation. The strongest impact would likely come from extending the framework to larger architectures and real-world sequence labeling tasks, where the HMM heritage provides a natural inductive bias.

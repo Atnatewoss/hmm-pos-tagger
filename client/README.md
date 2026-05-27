@@ -1,4 +1,4 @@
-# HMM POS Tagger — Client
+# HMM POS Tagger - Client
 
 Next.js frontend for the HMM part-of-speech tagger.
 
