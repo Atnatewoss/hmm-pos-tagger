@@ -15,7 +15,8 @@ server/
 │   └── api/
 │       └── routes.py         # API route definitions (APIRouter)
 ├── scripts/
-│   └── train.py              # Training CLI
+│   ├── train.py              # Training CLI
+│   └── download_model.py     # Vercel Blob model download
 ├── models/
 │   └── hmm_model.pkl         # Pre-trained model
 ├── data/                     # CoNLL-U datasets (train/dev/test)
@@ -24,14 +25,19 @@ server/
 └── pyproject.toml            # Dependencies
 ```
 
-## Setup
+## Deploying on Vercel
 
-```powershell
-# Create virtual environment & install
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-pip install -e .
+The model file is not tracked in git. To deploy on Vercel, upload it to Vercel Blob:
+
+```bash
+# Install Vercel CLI and log in
+npx vercel login
+npx vercel blob upload server/models/hmm_model.pkl
 ```
+
+Copy the returned URL and set it as `BLOB_MODEL_URL` in your Vercel project's environment variables. The build command in `vercel.json` downloads the model automatically.
+
+## Setup
 
 ## Usage
 

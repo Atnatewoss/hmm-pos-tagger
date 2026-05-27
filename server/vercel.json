@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "pip install -e .",
+  "buildCommand": "pip install -e . && python scripts/download_model.py",
   "installCommand": null
 }
