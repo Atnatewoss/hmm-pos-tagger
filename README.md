@@ -2,7 +2,7 @@
 
 A from-scratch implementation of a **Hidden Markov Model (HMM)** for part-of-speech tagging using Python, NumPy, and Pandas — no ML libraries used. Trained on the **Universal Dependencies English Web Treebank (UD_English-EWT)**.
 
-Includes a **FastAPI** backend and a **Next.js** frontend for interactive demonstration, plus a **paper review** as required by Task 2.
+Includes a **FastAPI** backend and a **Next.js** frontend for interactive demonstration, plus a **paper review** of the Hidden Markov Neural Networks paper.
 
 ---
 
@@ -43,13 +43,13 @@ hmm-pos-tagger/
 │   │   └── globals.css
 │   └── package.json
 ├── reviews/
-│   └── paper-review.md                  # Task 2: paper review with 8 future directions
+│   └── paper-review.md                  # Paper review: Hidden Markov Neural Networks
 └── README.md
 ```
 
 ---
 
-## Task 1: HMM Implementation
+## HMM Implementation
 
 ### Model
 
@@ -128,6 +128,7 @@ Open [http://localhost:3000](http://localhost:3000). The frontend calls the back
 |--------|------|-------------|
 | GET | `/` | Model overview |
 | GET | `/info` | Vocab size, tags, accuracy, tag counts |
+| GET | `/review` | Paper review markdown content |
 | POST | `/tag` | Tag a sentence → `[(word, tag), ...]` |
 | POST | `/evaluate` | Tag with per-word confidence |
 
@@ -140,9 +141,9 @@ download_data("data")   # Downloads train/dev/test to data/
 
 ---
 
-## Task 2: Paper Review
+## Paper Review
 
-A review of **"Hidden Markov Neural Networks"** by Rimella & Whiteley (Entropy, 2025) is at [`reviews/paper-review.md`](reviews/paper-review.md).
+A review of **"Hidden Markov Neural Networks"** by Rimella & Whiteley (Entropy, 2025) is at [`reviews/paper-review.md`](reviews/paper-review.md) and available interactively in the frontend.
 
 **Sections:** Summary → Strengths (5) → Weaknesses (5) → **8 Future Research Directions** → Connection to provided references → Overall assessment (7.5/10)
 
@@ -171,4 +172,4 @@ All three provided reference materials are connected to the review.
 
 ## License
 
-Built for educational purposes — iCog Group 1 Training.
+Built for educational purposes.

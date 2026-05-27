@@ -27,11 +27,12 @@ Opens at [http://localhost:3000](http://localhost:3000).
 
 ## API Integration
 
-The client calls two backend endpoints:
+The client calls these backend endpoints:
 
-| Endpoint     | When                     |
-|-------------|--------------------------|
-| `GET /info` | On page load (stats)     |
-| `POST /evaluate` | On each tagging request |
+| Endpoint       | When                          |
+|----------------|-------------------------------|
+| `GET /info`    | On page load (stats)          |
+| `POST /evaluate` | On each tagging request    |
+| `GET /review`  | On "Paper Review" toggle      |
 
 Backend URL is configured in `app/page.tsx` (`API_URL` constant).
