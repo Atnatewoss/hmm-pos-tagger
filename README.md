@@ -31,44 +31,36 @@ Includes a **FastAPI** backend and a **Next.js** frontend for interactive demons
 
 ```
 hmm-pos-tagger/
-  Makefile                          # Top-level commands (macOS/Linux)
-  make.ps1                          # Top-level commands (Windows PowerShell)
-  .vscode/settings.json             # Editor config (venv, ruff, formatter)
-  server/                           # Python backend
-    venv/                           #   Virtual environment (gitignored)
-    models/                         #   Trained artifacts (gitignored)
-      hmm_model.pkl                 #     Pickled HMM (84% accuracy)
-    data/                           #   UD_English-EWT dataset (gitignored)
-      en_ewt-ud-train.conllu        #     12,544 sentences
-      en_ewt-ud-dev.conllu          #     2,001 sentences
-      en_ewt-ud-test.conllu         #     2,077 sentences
-    reviews/                        #   Paper review markdown
-      paper-review.md               #     Hidden Markov Neural Networks
-    scripts/
-      train.py                      #   Training CLI
-    app/
-      __init__.py
-      main.py                       #   FastAPI entry point
-      api/
-        __init__.py
-        routes.py                   #   API route definitions
-      core/
-        __init__.py
-        hmm.py                      #   HMM + Viterbi + POSModel
-        dataset.py                  #   CoNLL-U parser + downloader
-        evaluate.py                 #   Accuracy evaluation
-    pyproject.toml                  #   Dependencies
-  client/                           # Next.js frontend
-    .env.example                    #   Environment template
-    app/
-      page.tsx                      #   Landing page
-      layout.tsx                    #   Root layout
-      globals.css                   #   Tailwind + custom styles
-      lib/
-        api.ts                      #   API client functions
-        markdown.tsx                #   Markdown renderer
-    public/
-    package.json
+├── Makefile                          # Top-level commands (macOS/Linux)
+├── make.ps1                          # Top-level commands (Windows PowerShell)
+├── .vscode/settings.json             # Editor configuration
+├── server/                           # Python backend
+│   ├── pyproject.toml                # Dependencies
+│   ├── vercel.json                   # Vercel deployment config
+│   ├── app/
+│   │   ├── main.py                   # FastAPI entry point
+│   │   ├── api/routes.py             # API route definitions
+│   │   └── core/
+│   │       ├── hmm.py                # HMM, Viterbi decoder, POSModel
+│   │       ├── dataset.py            # CoNLL-U parser & downloader
+│   │       └── evaluate.py           # Accuracy evaluation
+│   ├── scripts/train.py              # Training CLI
+│   ├── models/hmm_model.pkl          # Trained model (gitignored)
+│   ├── data/                         # CoNLL-U datasets (gitignored)
+│   └── reviews/paper-review.md       # Paper review markdown
+├── client/                           # Next.js frontend
+│   ├── .env.example                  # Environment template
+│   ├── app/
+│   │   ├── page.tsx                  # Landing page
+│   │   ├── layout.tsx                # Root layout
+│   │   ├── globals.css               # Tailwind + custom styles
+│   │   ├── implementation/page.tsx   # Interactive tagger demo
+│   │   ├── review/page.tsx           # Paper review reader
+│   │   └── lib/
+│   │       ├── api.ts                # API client functions
+│   │       └── markdown.tsx          # Markdown renderer
+│   └── package.json
+└── reviews/                          # (moved to server/reviews/)
 ```
 
 ### Data flow
@@ -186,7 +178,7 @@ download_data("data")   # Downloads train/dev/test to data/
 
 A review of **"Hidden Markov Neural Networks"** by Rimella & Whiteley (Entropy, 2025) is at [`server/reviews/paper-review.md`](server/reviews/paper-review.md) and available interactively in the frontend's review page.
 
-**Sections:** Summary - Strengths (5) - Weaknesses (5) - 8 Future Research Directions - Connection to references - Overall assessment (7.5/10)
+**Sections:** Summary - Strengths (5) - Weaknesses (5) - Future Research Directions (8) - Connection to references
 
 The 8 directions:
 1. Subspace methods for scaling
@@ -211,4 +203,4 @@ The 8 directions:
 
 ## License
 
-Built for educational purposes.
+MIT
