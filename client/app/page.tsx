@@ -5,23 +5,23 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 const API_URL = "http://localhost:8000";
 
 const TAG_COLORS: Record<string, string> = {
-  NOUN: "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-700",
-  VERB: "bg-green-100 text-green-800 border-green-300 dark:bg-green-900/40 dark:text-green-300 dark:border-green-700",
-  ADJ: "bg-orange-100 text-orange-800 border-orange-300 dark:bg-orange-900/40 dark:text-orange-300 dark:border-orange-700",
-  ADV: "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-700",
-  DET: "bg-teal-100 text-teal-800 border-teal-300 dark:bg-teal-900/40 dark:text-teal-300 dark:border-teal-700",
-  ADP: "bg-pink-100 text-pink-800 border-pink-300 dark:bg-pink-900/40 dark:text-pink-300 dark:border-pink-700",
-  PRON: "bg-indigo-100 text-indigo-800 border-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300 dark:border-indigo-700",
-  CCONJ: "bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900/40 dark:text-yellow-300 dark:border-yellow-700",
-  SCONJ: "bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900/40 dark:text-yellow-300 dark:border-yellow-700",
-  PART: "bg-rose-100 text-rose-800 border-rose-300 dark:bg-rose-900/40 dark:text-rose-300 dark:border-rose-700",
-  AUX: "bg-lime-100 text-lime-800 border-lime-300 dark:bg-lime-900/40 dark:text-lime-300 dark:border-lime-700",
-  NUM: "bg-cyan-100 text-cyan-800 border-cyan-300 dark:bg-cyan-900/40 dark:text-cyan-300 dark:border-cyan-700",
-  PROPN: "bg-violet-100 text-violet-800 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700",
-  PUNCT: "bg-gray-100 text-gray-600 border-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600",
-  INTJ: "bg-red-100 text-red-800 border-red-300 dark:bg-red-900/40 dark:text-red-300 dark:border-red-700",
-  SYM: "bg-stone-100 text-stone-600 border-stone-300 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600",
-  X: "bg-gray-100 text-gray-500 border-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600",
+  NOUN: "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800",
+  VERB: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800",
+  ADJ: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800",
+  ADV: "bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-950/50 dark:text-violet-300 dark:border-violet-800",
+  DET: "bg-cyan-50 text-cyan-700 border-cyan-200 dark:bg-cyan-950/50 dark:text-cyan-300 dark:border-cyan-800",
+  ADP: "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:border-rose-800",
+  PRON: "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/50 dark:text-indigo-300 dark:border-indigo-800",
+  CCONJ: "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-800",
+  SCONJ: "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-800",
+  PART: "bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-950/50 dark:text-pink-300 dark:border-pink-800",
+  AUX: "bg-lime-50 text-lime-700 border-lime-200 dark:bg-lime-950/50 dark:text-lime-300 dark:border-lime-800",
+  NUM: "bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-950/50 dark:text-teal-300 dark:border-teal-800",
+  PROPN: "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200 dark:bg-fuchsia-950/50 dark:text-fuchsia-300 dark:border-fuchsia-800",
+  PUNCT: "bg-gray-50 text-gray-500 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700",
+  INTJ: "bg-red-50 text-red-700 border-red-200 dark:bg-red-950/50 dark:text-red-300 dark:border-red-800",
+  SYM: "bg-gray-50 text-gray-500 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700",
+  X: "bg-gray-50 text-gray-500 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700",
 };
 
 const SAMPLES = [
@@ -46,7 +46,7 @@ interface ModelInfo {
 }
 
 function getTagColor(tag: string): string {
-  return TAG_COLORS[tag] || "bg-gray-100 text-gray-700 border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600";
+  return TAG_COLORS[tag] || "bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700";
 }
 
 function renderInline(text: string): React.ReactNode[] {
@@ -83,9 +83,9 @@ function renderInline(text: string): React.ReactNode[] {
     if (type === "bold") {
       parts.push(<strong key={key++}>{match[1]}</strong>);
     } else if (type === "link") {
-      parts.push(<a key={key++} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">{match[1]}</a>);
+      parts.push(<a key={key++} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline underline-offset-2 decoration-blue-300 dark:decoration-blue-700 hover:decoration-blue-500 transition">{match[1]}</a>);
     } else if (type === "code") {
-      parts.push(<code key={key++} className="bg-gray-100 dark:bg-gray-800 px-1 rounded text-sm font-mono">{match[1]}</code>);
+      parts.push(<code key={key++} className="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-sm font-mono text-pink-600 dark:text-pink-400">{match[1]}</code>);
     }
 
     remaining = remaining.slice(earliest + match[0].length);
@@ -103,7 +103,7 @@ function MarkdownContent({ content }: { content: string }) {
 
     const addParagraph = (text: string) => {
       if (text.trim()) {
-        result.push(<p key={key++} className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-3">{renderInline(text.trim())}</p>);
+        result.push(<p key={key++} className="text-[13px] leading-relaxed text-neutral-700 dark:text-neutral-300 mb-3">{renderInline(text.trim())}</p>);
       }
     };
 
@@ -119,15 +119,16 @@ function MarkdownContent({ content }: { content: string }) {
       if (/^#{1,6}\s/.test(trimmed)) {
         const level = trimmed.match(/^#+/)![0].length;
         const text = trimmed.replace(/^#+\s+/, "");
-        const Tag = `h${Math.min(level, 3)}` as keyof JSX.IntrinsicElements;
-        const size = level === 1 ? "text-xl font-bold" : level === 2 ? "text-lg font-semibold" : "text-base font-semibold";
-        result.push(<Tag key={key++} className={`${size} text-gray-900 dark:text-gray-100 mt-5 mb-2`}>{renderInline(text)}</Tag>);
+        const size = level === 1 ? "text-base font-semibold" : level === 2 ? "text-sm font-semibold" : "text-[13px] font-semibold";
+        const headingProps = { key: key++, className: `${size} text-neutral-900 dark:text-white mt-5 mb-2`, children: renderInline(text) };
+        const h = Math.min(level, 3);
+        result.push(h === 1 ? <h1 {...headingProps} /> : h === 2 ? <h2 {...headingProps} /> : <h3 {...headingProps} />);
         i++;
         continue;
       }
 
       if (/^---+$/.test(trimmed)) {
-        result.push(<hr key={key++} className="my-4 border-gray-300 dark:border-gray-600" />);
+        result.push(<hr key={key++} className="my-4 border-neutral-200 dark:border-neutral-800" />);
         i++;
         continue;
       }
@@ -139,8 +140,8 @@ function MarkdownContent({ content }: { content: string }) {
           i++;
         }
         result.push(
-          <blockquote key={key++} className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 mb-3">
-            {quoteLines.map((q, qi) => <p key={qi} className="text-sm">{renderInline(q)}</p>)}
+          <blockquote key={key++} className="border-l-2 border-neutral-300 dark:border-neutral-700 pl-4 italic text-neutral-500 dark:text-neutral-400 mb-3">
+            {quoteLines.map((q, qi) => <p key={qi} className="text-[13px]">{renderInline(q)}</p>)}
           </blockquote>
         );
         continue;
@@ -153,8 +154,8 @@ function MarkdownContent({ content }: { content: string }) {
           i++;
         }
         result.push(
-          <ul key={key++} className="list-disc pl-6 mb-3 space-y-1">
-            {items.map((item, ii) => <li key={ii} className="text-sm text-gray-700 dark:text-gray-300">{renderInline(item)}</li>)}
+          <ul key={key++} className="list-disc pl-5 mb-3 space-y-1">
+            {items.map((item, ii) => <li key={ii} className="text-[13px] text-neutral-700 dark:text-neutral-300">{renderInline(item)}</li>)}
           </ul>
         );
         continue;
@@ -167,8 +168,8 @@ function MarkdownContent({ content }: { content: string }) {
           i++;
         }
         result.push(
-          <ol key={key++} className="list-decimal pl-6 mb-3 space-y-1">
-            {items.map((item, ii) => <li key={ii} className="text-sm text-gray-700 dark:text-gray-300">{renderInline(item)}</li>)}
+          <ol key={key++} className="list-decimal pl-5 mb-3 space-y-1">
+            {items.map((item, ii) => <li key={ii} className="text-[13px] text-neutral-700 dark:text-neutral-300">{renderInline(item)}</li>)}
           </ol>
         );
         continue;
@@ -184,17 +185,17 @@ function MarkdownContent({ content }: { content: string }) {
           const headerCells = tableLines[0].split("|").filter(c => c.trim()).map(c => c.trim());
           const bodyRows = tableLines.slice(2);
           result.push(
-            <div key={key++} className="overflow-x-auto mb-3">
-              <table className="w-full text-sm border-collapse">
+            <div key={key++} className="overflow-x-auto mb-3 -mx-2">
+              <table className="w-full text-[13px] border-collapse">
                 <thead>
-                  <tr className="border-b border-gray-300 dark:border-gray-600">
-                    {headerCells.map((cell, ci) => <th key={ci} className="px-3 py-2 text-left font-semibold text-gray-800 dark:text-gray-200">{renderInline(cell)}</th>)}
+                  <tr className="border-b border-neutral-200 dark:border-neutral-800">
+                    {headerCells.map((cell, ci) => <th key={ci} className="px-3 py-2 text-left font-medium text-neutral-500 dark:text-neutral-400">{renderInline(cell)}</th>)}
                   </tr>
                 </thead>
                 <tbody>
                   {bodyRows.map((row, ri) => (
-                    <tr key={ri} className="border-b border-gray-200 dark:border-gray-700">
-                      {row.split("|").filter(c => c.trim()).map((cell, ci) => <td key={ci} className="px-3 py-2 text-gray-700 dark:text-gray-300">{renderInline(cell.trim())}</td>)}
+                    <tr key={ri} className="border-b border-neutral-100 dark:border-neutral-800/50">
+                      {row.split("|").filter(c => c.trim()).map((cell, ci) => <td key={ci} className="px-3 py-2 text-neutral-700 dark:text-neutral-300">{renderInline(cell.trim())}</td>)}
                     </tr>
                   ))}
                 </tbody>
@@ -202,11 +203,6 @@ function MarkdownContent({ content }: { content: string }) {
             </div>
           );
         }
-        continue;
-      }
-
-      if (trimmed.startsWith("|")) {
-        i++;
         continue;
       }
 
@@ -297,39 +293,46 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 dark:from-gray-950 dark:to-gray-900 transition-colors">
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-slate-200 dark:border-gray-800 px-6 py-4 shadow-sm sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white">HMM POS Tagger</h1>
-            <p className="text-sm text-slate-500 dark:text-gray-400">
-              Hidden Markov Model Part-of-Speech Tagging
-            </p>
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0b] transition-colors">
+      <header className="sticky top-0 z-10 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-[#0a0a0b]/80 backdrop-blur-md">
+        <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center">
+              <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-sm font-semibold text-neutral-900 dark:text-white">HMM POS Tagger</h1>
+              <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-none">Hidden Markov Model Tagging</p>
+            </div>
           </div>
           <div className="flex items-center gap-4">
             {modelInfo && (
-              <div className="hidden sm:flex gap-4 text-xs text-slate-500 dark:text-gray-400">
-                <span>Vocab: {modelInfo.vocab_size.toLocaleString()}</span>
-                <span>Tags: {modelInfo.num_tags}</span>
+              <div className="hidden sm:flex items-center gap-3 text-[11px] text-neutral-400 dark:text-neutral-500">
+                <span>{modelInfo.vocab_size.toLocaleString()} words</span>
+                <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                <span>{modelInfo.num_tags} tags</span>
                 {modelInfo.dev_accuracy !== null && (
-                  <span className="font-medium text-emerald-600 dark:text-emerald-400">
-                    {(modelInfo.dev_accuracy * 100).toFixed(1)}%
-                  </span>
+                  <>
+                    <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">{(modelInfo.dev_accuracy * 100).toFixed(1)}%</span>
+                  </>
                 )}
               </div>
             )}
             <button
               onClick={toggleDark}
-              className="p-2 rounded-lg text-slate-500 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                 </svg>
               )}
             </button>
@@ -337,144 +340,169 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-4xl mx-auto w-full px-6 py-8">
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-slate-200 dark:border-gray-800 p-6 mb-6 transition-colors">
-          <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">
-            Enter a sentence to tag:
-          </label>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="w-full border border-slate-300 dark:border-gray-700 rounded-lg px-4 py-3 text-slate-800 dark:text-gray-200 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-colors"
-            rows={3}
-            placeholder="Type a sentence..."
-          />
-          <div className="flex items-center justify-between mt-3">
-            <button
-              onClick={() => tagSentence(text)}
-              disabled={loading}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 dark:bg-blue-500 dark:hover:bg-blue-600 dark:disabled:bg-blue-400 text-white font-medium px-6 py-2 rounded-lg transition-colors"
-            >
-              {loading ? "Tagging..." : "Tag Sentence"}
-            </button>
+      <main className="max-w-3xl mx-auto px-6 py-10 space-y-6">
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111] shadow-sm transition-colors">
+          <div className="px-5 py-4 border-b border-neutral-100 dark:border-neutral-800">
+            <h2 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Tag a sentence</h2>
+          </div>
+          <div className="p-5 space-y-3">
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className="w-full border border-neutral-200 dark:border-neutral-700 rounded-lg px-4 py-3 text-sm text-neutral-900 dark:text-neutral-100 bg-white dark:bg-neutral-900/50 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 resize-none placeholder-neutral-400 dark:placeholder-neutral-600 transition-colors"
+              rows={3}
+              placeholder="Type a sentence..."
+            />
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => tagSentence(text)}
+                disabled={loading}
+                className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Tagging
+                  </>
+                ) : "Tag sentence"}
+              </button>
+            </div>
           </div>
         </div>
 
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg px-4 py-3 mb-6 text-sm">
-            {error}
+          <div className="rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/30 px-5 py-3 flex items-start gap-3">
+            <svg className="w-4 h-4 mt-0.5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+            <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
           </div>
         )}
 
         {result && result.length > 0 && (
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-slate-200 dark:border-gray-800 p-6 mb-6 transition-colors">
-            <h2 className="text-sm font-semibold text-slate-700 dark:text-gray-300 mb-4 uppercase tracking-wide">
-              Tagged Output
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {result.map((item, i) => (
-                <div
-                  key={i}
-                  className={`border rounded-lg px-3 py-2 text-sm ${getTagColor(item.tag)}`}
-                  title={`confidence: ${(item.confidence * 100).toFixed(1)}%`}
-                >
-                  <span className="font-medium">{item.word}</span>
-                  <span className="ml-1.5 font-mono text-xs opacity-70">
-                    /{item.tag}
-                  </span>
-                </div>
-              ))}
+          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111] shadow-sm transition-colors">
+            <div className="px-5 py-4 border-b border-neutral-100 dark:border-neutral-800">
+              <h2 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Tagged output</h2>
+            </div>
+            <div className="p-5">
+              <div className="flex flex-wrap gap-1.5">
+                {result.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`inline-flex items-center gap-1.5 border rounded-full px-3 py-1 text-sm ${getTagColor(item.tag)} animate-fade-in`}
+                    title={`confidence: ${(item.confidence * 100).toFixed(1)}%`}
+                    style={{ animationDelay: `${i * 30}ms` }}
+                  >
+                    <span className="font-medium">{item.word}</span>
+                    <span className="font-mono text-[11px] opacity-60">/{item.tag}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
 
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-slate-200 dark:border-gray-800 p-6 mb-6 transition-colors">
-          <h2 className="text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
-            Try a sample
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {SAMPLES.map((s) => (
-              <button
-                key={s}
-                onClick={() => {
-                  setText(s);
-                  tagSentence(s);
-                }}
-                className="text-sm bg-slate-50 dark:bg-gray-800 hover:bg-slate-100 dark:hover:bg-gray-700 border border-slate-200 dark:border-gray-700 rounded-lg px-3 py-2 text-slate-600 dark:text-gray-400 transition-colors"
-              >
-                {s.length > 50 ? s.slice(0, 50) + "..." : s}
-              </button>
-            ))}
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111] shadow-sm transition-colors">
+          <div className="px-5 py-4 border-b border-neutral-100 dark:border-neutral-800">
+            <h2 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Try a sample</h2>
+          </div>
+          <div className="p-5">
+            <div className="flex flex-wrap gap-2">
+              {SAMPLES.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => {
+                    setText(s);
+                    tagSentence(s);
+                  }}
+                  className="text-[13px] text-neutral-600 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 rounded-lg px-3 py-1.5 transition-colors"
+                >
+                  {s.length > 50 ? s.slice(0, 50) + "..." : s}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {modelInfo && (
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-slate-200 dark:border-gray-800 p-6 mb-6 transition-colors">
-            <h2 className="text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
-              Model Details
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-slate-50 dark:bg-gray-800 rounded-lg p-3">
-                <div className="text-2xl font-bold text-slate-800 dark:text-white">
-                  {modelInfo.vocab_size.toLocaleString()}
+          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111] shadow-sm transition-colors">
+            <div className="px-5 py-4 border-b border-neutral-100 dark:border-neutral-800">
+              <h2 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Model details</h2>
+            </div>
+            <div className="p-5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-neutral-100 dark:bg-neutral-800 rounded-lg overflow-hidden">
+                <div className="bg-white dark:bg-[#111] p-4">
+                  <div className="text-lg font-semibold text-neutral-900 dark:text-white">{modelInfo.vocab_size.toLocaleString()}</div>
+                  <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Words</div>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-gray-400">Vocabulary Size</div>
-              </div>
-              <div className="bg-slate-50 dark:bg-gray-800 rounded-lg p-3">
-                <div className="text-2xl font-bold text-slate-800 dark:text-white">
-                  {modelInfo.num_tags}
+                <div className="bg-white dark:bg-[#111] p-4">
+                  <div className="text-lg font-semibold text-neutral-900 dark:text-white">{modelInfo.num_tags}</div>
+                  <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Tags</div>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-gray-400">POS Tags</div>
-              </div>
-              <div className="bg-slate-50 dark:bg-gray-800 rounded-lg p-3">
-                <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
-                  {modelInfo.dev_accuracy !== null
-                    ? `${(modelInfo.dev_accuracy * 100).toFixed(1)}%`
-                    : "N/A"}
+                <div className="bg-white dark:bg-[#111] p-4">
+                  <div className="text-lg font-semibold text-emerald-600 dark:text-emerald-400">
+                    {modelInfo.dev_accuracy !== null ? `${(modelInfo.dev_accuracy * 100).toFixed(1)}%` : "N/A"}
+                  </div>
+                  <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Accuracy</div>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-gray-400">Dev Accuracy</div>
-              </div>
-              <div className="bg-slate-50 dark:bg-gray-800 rounded-lg p-3">
-                <div className="text-lg font-bold text-slate-800 dark:text-white font-mono text-xs flex flex-wrap gap-1">
-                  {modelInfo.tags.slice(0, 8).join(", ")}
-                  {modelInfo.tags.length > 8 && "..."}
+                <div className="bg-white dark:bg-[#111] p-4">
+                  <div className="text-xs font-medium text-neutral-900 dark:text-white leading-relaxed">
+                    {modelInfo.tags.slice(0, 6).join(", ")}
+                    {modelInfo.tags.length > 6 && <span className="text-neutral-400"> +{modelInfo.tags.length - 6}</span>}
+                  </div>
+                  <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Tag set</div>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-gray-400">Tag Set</div>
               </div>
             </div>
           </div>
         )}
 
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-slate-200 dark:border-gray-800 transition-colors">
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111] shadow-sm transition-colors overflow-hidden">
           <button
             onClick={loadReview}
-            className="w-full flex items-center justify-between px-6 py-4 text-left"
+            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors"
           >
-            <h2 className="text-sm font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wide">
-              Paper Review
-            </h2>
+            <div className="flex items-center gap-3">
+              <svg className="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+              </svg>
+              <h2 className="text-sm font-medium text-neutral-900 dark:text-white">Paper Review</h2>
+            </div>
             <svg
-              className={`w-4 h-4 text-slate-400 dark:text-gray-500 transition-transform ${showReview ? "rotate-180" : ""}`}
-              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${showReview ? "rotate-180" : ""}`}
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
           {reviewLoading && (
-            <div className="px-6 pb-4 text-sm text-slate-500 dark:text-gray-400">
-              Loading review...
+            <div className="px-5 pb-5">
+              <div className="flex items-center gap-2 text-sm text-neutral-400">
+                <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Loading review...
+              </div>
             </div>
           )}
           {showReview && !reviewLoading && reviewContent && (
-            <div className="px-6 pb-6 border-t border-slate-200 dark:border-gray-800 pt-4 max-h-96 overflow-y-auto">
+            <div className="border-t border-neutral-100 dark:border-neutral-800 px-5 pb-5 pt-4 max-h-96 overflow-y-auto">
               <MarkdownContent content={reviewContent} />
             </div>
           )}
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 dark:border-gray-800 px-6 py-4 text-center text-xs text-slate-400 dark:text-gray-600">
-        HMM POS Tagger &mdash; Built with Python, FastAPI, Next.js &amp; NumPy
+      <footer className="border-t border-neutral-200 dark:border-neutral-800 mt-16">
+        <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-center">
+          <p className="text-[11px] text-neutral-400 dark:text-neutral-600">
+            HMM POS Tagger - Python, FastAPI, Next.js &amp; NumPy
+          </p>
+        </div>
       </footer>
     </div>
   );

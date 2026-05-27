@@ -5,17 +5,18 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-surface: #ffffff;
-  --color-surface-alt: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --animate-fade-in: fade-in 200ms ease-out backwards;
 }
 
-.dark {
-  --color-surface: #0f172a;
-  --color-surface-alt: #1e293b;
-  --color-border: #334155;
-  --color-text: #f1f5f9;
-  --color-text-muted: #94a3b8;
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::selection {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark ::selection {
+  background-color: rgba(96, 165, 250, 0.3);
 }
