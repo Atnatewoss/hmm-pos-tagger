@@ -5,6 +5,7 @@ __pycache__/
 venv/
 .venv/
 .env
+!.env.example
 
 # Data (downloaded datasets)
 server/data/*

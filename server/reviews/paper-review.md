@@ -105,8 +105,4 @@ The paper builds on three pillars that the training materials reference:
 
 3. **The HMNN paper itself (Rimella & Whiteley, 2025)**  -  Synthesizes these foundations by replacing discrete hidden states (from classic HMM tagging) with continuous neural network weights, and replacing MLE counting (from supervised HMM learning) with variational Bayes.
 
----
 
-## 6. Assessment
-
-**Rating: 7.5/10**  -  A technically sound contribution that addresses an important problem (continual learning with uncertainty) through a principled combination of HMMs and Bayesian neural networks. The main limitations are the scalability constraints and the relatively narrow empirical evaluation. The strongest impact would likely come from extending the framework to larger architectures and real-world sequence labeling tasks, where the HMM heritage provides a natural inductive bias.

@@ -19,6 +19,8 @@ server/
 ├── models/
 │   └── hmm_model.pkl         # Pre-trained model
 ├── data/                     # CoNLL-U datasets (train/dev/test)
+├── reviews/
+│   └── paper-review.md       # Paper review: Hidden Markov Neural Networks
 └── pyproject.toml            # Dependencies
 ```
 
