@@ -1,0 +1,61 @@
+# HMM POS Tagger — Server
+
+Python backend for the HMM part-of-speech tagger.
+
+## Architecture
+
+```
+server/
+├── app/
+│   ├── main.py               # FastAPI entry point (loads model, exposes endpoints)
+│   ├── core/
+│   │   ├── hmm.py            # HMM, Viterbi decoder, POSModel
+│   │   ├── dataset.py        # CoNLL-U parser & downloader
+│   │   └── evaluate.py       # Accuracy evaluation & confusion analysis
+│   └── api/
+│       └── routes.py         # API route definitions (APIRouter)
+├── scripts/
+│   └── train.py              # Training CLI
+├── models/
+│   └── hmm_model.pkl         # Pre-trained model
+├── data/                     # CoNLL-U datasets (train/dev/test)
+└── pyproject.toml            # Dependencies
+```
+
+## Setup
+
+```powershell
+# Create virtual environment & install
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -e .
+```
+
+## Usage
+
+```powershell
+# Train the model
+python scripts\train.py
+
+# Start the API server
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Download datasets
+python -c "from app.core.dataset import download_data; download_data('data')"
+```
+
+## API Endpoints
+
+| Method | Path         | Description                                |
+|--------|--------------|--------------------------------------------|
+| GET    | `/`          | Model overview (vocab, tags, accuracy)     |
+| GET    | `/info`      | Detailed model info (tag counts, etc.)     |
+| POST   | `/tag`       | Tag a sentence → `[(word, tag), ...]`      |
+| POST   | `/evaluate`  | Tag with per-word confidence scores        |
+
+## Model
+
+- Transitions: MLE with add-1 Laplace smoothing
+- Emissions: MLE with add-1 smoothing; OOV → marginal tag distribution
+- Decoding: Log-space Viterbi with backpointers
+- Dev accuracy: ~83.9%
