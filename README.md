@@ -52,17 +52,17 @@ hmm-pos-tagger/
 │   ├── data/                         # CoNLL-U datasets (gitignored)
 │   └── reviews/paper-review.md       # Paper review markdown
 ├── client/                           # Next.js frontend
-│   ├── .env.example                  # Environment template
-│   ├── app/
-│   │   ├── page.tsx                  # Landing page
-│   │   ├── layout.tsx                # Root layout
-│   │   ├── globals.css               # Tailwind + custom styles
-│   │   ├── implementation/page.tsx   # Interactive tagger demo
-│   │   ├── review/page.tsx           # Paper review reader
-│   │   └── lib/
-│   │       ├── api.ts                # API client functions
-│   │       └── markdown.tsx          # Markdown renderer
-│   └── package.json
+    ├── .env.example                  # Environment template
+    ├── app/
+    │   ├── page.tsx                  # Landing page
+    │   ├── layout.tsx                # Root layout
+    │   ├── globals.css               # Tailwind + custom styles
+    │   ├── implementation/page.tsx   # Interactive tagger demo
+    │   ├── review/page.tsx           # Paper review reader
+    │   └── lib/
+    │       ├── api.ts                # API client functions
+    │       └── markdown.tsx          # Markdown renderer
+    └── package.json
 ```
 
 ### Data flow
