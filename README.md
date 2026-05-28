@@ -17,14 +17,14 @@ Includes a **FastAPI** backend and a **Next.js** frontend for interactive demons
                           ┌──────▼──────────────┐
                           │  FastAPI Server      │
                           │  (localhost:8000)    │
-                          └──────┬──────────────┘
-                    ┌─────────────┼──────────────┐
-              ┌─────▼─────┐ ┌────▼────┐ ┌───────▼──┐
-              │  Core     │ │  API    │ │  Data    │
-              │  HMM      │ │ Routes  │ │  CoNLL-U │
-              │  Viterbi  │ │         │ │  files   │
-              │  Evaluator│ │         │ │          │
-              └───────────┘ └─────────┘ └──────────┘
+                           └──────┬──────────────┘
+                     ┌─────────────┼──────────────────┐
+               ┌─────▼─────┐ ┌────▼────┐ ┌───────▼──┐ ┌────────▼──┐
+               │  Core     │ │  API    │ │  Data    │ │  Model   │
+               │  HMM      │ │ Routes  │ │  CoNLL-U │ │ hmm_model│
+               │  Viterbi  │ │         │ │  files   │ │  .pkl    │
+               │  Evaluator│ │         │ │          │ │(loaded)  │
+               └───────────┘ └─────────┘ └──────────┘ └───────────┘
 ```
 
 ### Project structure
@@ -63,7 +63,6 @@ hmm-pos-tagger/
 │   │       ├── api.ts                # API client functions
 │   │       └── markdown.tsx          # Markdown renderer
 │   └── package.json
-└── server/reviews/paper-review.md    # Paper review (served via API)
 ```
 
 ### Data flow
